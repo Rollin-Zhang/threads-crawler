@@ -1,0 +1,628 @@
+2024-09-04 01:34:52 [scrapy.addons] INFO: Enabled addons:
+[]
+2024-09-04 01:34:52 [scrapy.extensions.telnet] INFO: Telnet Password: d68ce86276d5a105
+2024-09-04 01:34:52 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2024-09-04 01:34:52 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 10,
+ 'AUTOTHROTTLE_START_DELAY': 1,
+ 'BOT_NAME': 'threads_scraper',
+ 'DOWNLOAD_DELAY': 2,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_FILE': 'facebook_scrapy_log.txt',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'threads_scraper.spiders',
+ 'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
+ 'SPIDER_MODULES': ['threads_scraper.spiders'],
+ 'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2024-09-04 01:34:52 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2024-09-04 01:34:52 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2024-09-04 01:34:52 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2024-09-04 01:34:52 [scrapy.core.engine] INFO: Spider opened
+2024-09-04 01:34:52 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2024-09-04 01:34:52 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2024-09-04 01:34:52 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:34:52 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:34:57 [scrapy-playwright] INFO: Launching browser chromium
+2024-09-04 01:34:57 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.facebook.com/login>
+Traceback (most recent call last):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/internet/defer.py", line 2010, in _inlineCallbacks
+    result = context.run(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/python/failure.py", line 549, in throwExceptionIntoGenerator
+    return g.throw(self.value.with_traceback(self.tb))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/downloader/middleware.py", line 54, in process_request
+    return (yield download_func(request=request, spider=spider))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/internet/defer.py", line 1250, in adapt
+    extracted: _SelfResultT | Failure = result.result()
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 378, in _download_request
+    return await self._download_request_with_retry(request=request, spider=spider)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 397, in _download_request_with_retry
+    page = await self._create_page(request=request, spider=spider)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 296, in _create_page
+    ctx_wrapper = await self._create_browser_context(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 257, in _create_browser_context
+    await self._maybe_launch_browser()
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 205, in _maybe_launch_browser
+    self.browser = await self.browser_type.launch(**self.config.launch_options)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/async_api/_generated.py", line 14119, in launch
+    await self._impl_obj.launch(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 95, in launch
+    Browser, from_channel(await self._channel.send("launch", params))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 59, in send
+    return await self._connection.wrap_api_call(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 514, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch: Pass user_data_dir parameter to 'browser_type.launch_persistent_context(user_data_dir, **kwargs)' instead of specifying '--user-data-dir' argument
+2024-09-04 01:34:58 [scrapy.core.engine] INFO: Closing spider (finished)
+2024-09-04 01:34:58 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 1,
+ 'downloader/exception_type_count/playwright._impl._errors.Error': 1,
+ 'downloader/request_bytes': 363,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'elapsed_time_seconds': 5.236507,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2024, 9, 3, 17, 34, 58, 5424, tzinfo=datetime.timezone.utc),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 13,
+ 'memusage/max': 76726272,
+ 'memusage/startup': 76726272,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2024, 9, 3, 17, 34, 52, 768917, tzinfo=datetime.timezone.utc)}
+2024-09-04 01:34:58 [scrapy.core.engine] INFO: Spider closed (finished)
+2024-09-04 01:34:58 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:34:58 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:35:11 [scrapy.addons] INFO: Enabled addons:
+[]
+2024-09-04 01:35:11 [scrapy.extensions.telnet] INFO: Telnet Password: 0681bc220f869f37
+2024-09-04 01:35:11 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2024-09-04 01:35:11 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 10,
+ 'AUTOTHROTTLE_START_DELAY': 1,
+ 'BOT_NAME': 'threads_scraper',
+ 'DOWNLOAD_DELAY': 2,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_FILE': 'facebook_scrapy_log.txt',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'threads_scraper.spiders',
+ 'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
+ 'SPIDER_MODULES': ['threads_scraper.spiders'],
+ 'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2024-09-04 01:35:11 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2024-09-04 01:35:11 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2024-09-04 01:35:11 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2024-09-04 01:35:11 [scrapy.core.engine] INFO: Spider opened
+2024-09-04 01:35:11 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2024-09-04 01:35:11 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2024-09-04 01:35:11 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:35:11 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:35:16 [scrapy-playwright] INFO: Launching browser chromium
+2024-09-04 01:35:17 [scrapy.core.scraper] ERROR: Error downloading <GET https://www.facebook.com/login>
+Traceback (most recent call last):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/internet/defer.py", line 2010, in _inlineCallbacks
+    result = context.run(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/python/failure.py", line 549, in throwExceptionIntoGenerator
+    return g.throw(self.value.with_traceback(self.tb))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/downloader/middleware.py", line 54, in process_request
+    return (yield download_func(request=request, spider=spider))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/twisted/internet/defer.py", line 1250, in adapt
+    extracted: _SelfResultT | Failure = result.result()
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 378, in _download_request
+    return await self._download_request_with_retry(request=request, spider=spider)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 397, in _download_request_with_retry
+    page = await self._create_page(request=request, spider=spider)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 296, in _create_page
+    ctx_wrapper = await self._create_browser_context(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 257, in _create_browser_context
+    await self._maybe_launch_browser()
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy_playwright/handler.py", line 205, in _maybe_launch_browser
+    self.browser = await self.browser_type.launch(**self.config.launch_options)
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/async_api/_generated.py", line 14119, in launch
+    await self._impl_obj.launch(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 95, in launch
+    Browser, from_channel(await self._channel.send("launch", params))
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 59, in send
+    return await self._connection.wrap_api_call(
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 514, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch: Pass user_data_dir parameter to 'browser_type.launch_persistent_context(user_data_dir, **kwargs)' instead of specifying '--user-data-dir' argument
+2024-09-04 01:35:17 [scrapy.core.engine] INFO: Closing spider (finished)
+2024-09-04 01:35:17 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/exception_count': 1,
+ 'downloader/exception_type_count/playwright._impl._errors.Error': 1,
+ 'downloader/request_bytes': 363,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'elapsed_time_seconds': 5.21899,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2024, 9, 3, 17, 35, 17, 138356, tzinfo=datetime.timezone.utc),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 13,
+ 'memusage/max': 76791808,
+ 'memusage/startup': 76791808,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2024, 9, 3, 17, 35, 11, 919366, tzinfo=datetime.timezone.utc)}
+2024-09-04 01:35:17 [scrapy.core.engine] INFO: Spider closed (finished)
+2024-09-04 01:35:17 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:35:17 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:38:16 [scrapy.addons] INFO: Enabled addons:
+[]
+2024-09-04 01:38:16 [scrapy.extensions.telnet] INFO: Telnet Password: dedc32aa03fb8c8e
+2024-09-04 01:38:16 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2024-09-04 01:38:16 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 10,
+ 'AUTOTHROTTLE_START_DELAY': 1,
+ 'BOT_NAME': 'threads_scraper',
+ 'DOWNLOAD_DELAY': 2,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_FILE': 'facebook_scrapy_log.txt',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'threads_scraper.spiders',
+ 'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
+ 'SPIDER_MODULES': ['threads_scraper.spiders'],
+ 'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2024-09-04 01:38:16 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2024-09-04 01:38:16 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2024-09-04 01:38:16 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2024-09-04 01:38:16 [scrapy.core.engine] INFO: Spider opened
+2024-09-04 01:38:16 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2024-09-04 01:38:16 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2024-09-04 01:38:16 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:38:16 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:38:21 [scrapy-playwright] INFO: Launching browser chromium
+2024-09-04 01:38:22 [scrapy-playwright] INFO: Browser chromium launched
+2024-09-04 01:38:25 [root] INFO: 輸入用戶名和密碼。
+2024-09-04 01:38:34 [root] INFO: 提交登入表單。
+2024-09-04 01:38:41 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.facebook.com/login> (referer: None)
+Traceback (most recent call last):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/defer.py", line 295, in aiter_errback
+    yield await it.__anext__()
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/referer.py", line 355, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/urllength.py", line 30, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/depth.py", line 35, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/threads_scraper/threads_scraper/spiders/facebook_spider.py", line 85, in login_and_save_cookies
+    for request in self.process_accounts_after_login(headers):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FacebookSpider' object has no attribute 'process_accounts_after_login'
+2024-09-04 01:38:42 [scrapy.core.engine] INFO: Closing spider (finished)
+2024-09-04 01:38:42 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 363,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 75365,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 25.109484,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2024, 9, 3, 17, 38, 42, 1200, tzinfo=datetime.timezone.utc),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 16,
+ 'memusage/max': 77004800,
+ 'memusage/startup': 77004800,
+ 'playwright/browser_count': 1,
+ 'playwright/context_count': 1,
+ 'playwright/context_count/max_concurrent': 1,
+ 'playwright/context_count/persistent/False': 1,
+ 'playwright/context_count/remote/False': 1,
+ 'playwright/page_count': 1,
+ 'playwright/page_count/max_concurrent': 1,
+ 'playwright/request_count': 57,
+ 'playwright/request_count/method/GET': 53,
+ 'playwright/request_count/method/POST': 4,
+ 'playwright/request_count/navigation': 2,
+ 'playwright/request_count/resource_type/document': 2,
+ 'playwright/request_count/resource_type/image': 7,
+ 'playwright/request_count/resource_type/other': 2,
+ 'playwright/request_count/resource_type/script': 38,
+ 'playwright/request_count/resource_type/stylesheet': 5,
+ 'playwright/request_count/resource_type/xhr': 3,
+ 'playwright/response_count': 57,
+ 'playwright/response_count/method/GET': 53,
+ 'playwright/response_count/method/POST': 4,
+ 'playwright/response_count/resource_type/document': 2,
+ 'playwright/response_count/resource_type/image': 7,
+ 'playwright/response_count/resource_type/other': 2,
+ 'playwright/response_count/resource_type/script': 38,
+ 'playwright/response_count/resource_type/stylesheet': 5,
+ 'playwright/response_count/resource_type/xhr': 3,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/AttributeError': 1,
+ 'start_time': datetime.datetime(2024, 9, 3, 17, 38, 16, 891716, tzinfo=datetime.timezone.utc)}
+2024-09-04 01:38:42 [scrapy.core.engine] INFO: Spider closed (finished)
+2024-09-04 01:38:42 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:38:42 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:38:42 [scrapy-playwright] INFO: Closing browser
+2024-09-04 01:40:33 [scrapy.addons] INFO: Enabled addons:
+[]
+2024-09-04 01:40:33 [scrapy.extensions.telnet] INFO: Telnet Password: 1547f5cc68f74187
+2024-09-04 01:40:33 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2024-09-04 01:40:33 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 10,
+ 'AUTOTHROTTLE_START_DELAY': 1,
+ 'BOT_NAME': 'threads_scraper',
+ 'DOWNLOAD_DELAY': 2,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_FILE': 'facebook_scrapy_log.txt',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'threads_scraper.spiders',
+ 'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
+ 'SPIDER_MODULES': ['threads_scraper.spiders'],
+ 'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2024-09-04 01:40:33 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2024-09-04 01:40:33 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2024-09-04 01:40:33 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2024-09-04 01:40:33 [scrapy.core.engine] INFO: Spider opened
+2024-09-04 01:40:33 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2024-09-04 01:40:33 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2024-09-04 01:40:33 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:40:33 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:40:38 [scrapy-playwright] INFO: Launching browser chromium
+2024-09-04 01:40:39 [scrapy-playwright] INFO: Browser chromium launched
+2024-09-04 01:40:41 [root] INFO: 輸入用戶名和密碼。
+2024-09-04 01:40:52 [root] INFO: 提交登入表單。
+2024-09-04 01:41:02 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.facebook.com/login> (referer: None)
+Traceback (most recent call last):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/defer.py", line 295, in aiter_errback
+    yield await it.__anext__()
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/referer.py", line 355, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/urllength.py", line 30, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/depth.py", line 35, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/threads_scraper/threads_scraper/spiders/facebook_spider.py", line 85, in login_and_save_cookies
+    for request in self.process_accounts_after_login(headers):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FacebookSpider' object has no attribute 'process_accounts_after_login'
+2024-09-04 01:41:02 [scrapy.core.engine] INFO: Closing spider (finished)
+2024-09-04 01:41:02 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 363,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 75364,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 28.48942,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2024, 9, 3, 17, 41, 2, 479704, tzinfo=datetime.timezone.utc),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 16,
+ 'memusage/max': 76890112,
+ 'memusage/startup': 76890112,
+ 'playwright/browser_count': 1,
+ 'playwright/context_count': 1,
+ 'playwright/context_count/max_concurrent': 1,
+ 'playwright/context_count/persistent/False': 1,
+ 'playwright/context_count/remote/False': 1,
+ 'playwright/page_count': 1,
+ 'playwright/page_count/max_concurrent': 1,
+ 'playwright/request_count': 103,
+ 'playwright/request_count/method/GET': 97,
+ 'playwright/request_count/method/POST': 6,
+ 'playwright/request_count/navigation': 3,
+ 'playwright/request_count/resource_type/document': 3,
+ 'playwright/request_count/resource_type/image': 11,
+ 'playwright/request_count/resource_type/other': 3,
+ 'playwright/request_count/resource_type/script': 71,
+ 'playwright/request_count/resource_type/stylesheet': 10,
+ 'playwright/request_count/resource_type/xhr': 5,
+ 'playwright/response_count': 103,
+ 'playwright/response_count/method/GET': 97,
+ 'playwright/response_count/method/POST': 6,
+ 'playwright/response_count/resource_type/document': 3,
+ 'playwright/response_count/resource_type/image': 11,
+ 'playwright/response_count/resource_type/other': 3,
+ 'playwright/response_count/resource_type/script': 71,
+ 'playwright/response_count/resource_type/stylesheet': 10,
+ 'playwright/response_count/resource_type/xhr': 5,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/AttributeError': 1,
+ 'start_time': datetime.datetime(2024, 9, 3, 17, 40, 33, 990284, tzinfo=datetime.timezone.utc)}
+2024-09-04 01:41:02 [scrapy.core.engine] INFO: Spider closed (finished)
+2024-09-04 01:41:02 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:41:02 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:41:02 [scrapy-playwright] INFO: Closing browser
+2024-09-04 01:41:18 [scrapy.addons] INFO: Enabled addons:
+[]
+2024-09-04 01:41:18 [scrapy.extensions.telnet] INFO: Telnet Password: df90ca5c7b02cc42
+2024-09-04 01:41:18 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.throttle.AutoThrottle']
+2024-09-04 01:41:18 [scrapy.crawler] INFO: Overridden settings:
+{'AUTOTHROTTLE_ENABLED': True,
+ 'AUTOTHROTTLE_MAX_DELAY': 10,
+ 'AUTOTHROTTLE_START_DELAY': 1,
+ 'BOT_NAME': 'threads_scraper',
+ 'DOWNLOAD_DELAY': 2,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'LOG_FILE': 'facebook_scrapy_log.txt',
+ 'LOG_LEVEL': 'INFO',
+ 'NEWSPIDER_MODULE': 'threads_scraper.spiders',
+ 'REQUEST_FINGERPRINTER_IMPLEMENTATION': '2.7',
+ 'SPIDER_MODULES': ['threads_scraper.spiders'],
+ 'TWISTED_REACTOR': 'twisted.internet.asyncioreactor.AsyncioSelectorReactor',
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+2024-09-04 01:41:19 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2024-09-04 01:41:19 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2024-09-04 01:41:19 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2024-09-04 01:41:19 [scrapy.core.engine] INFO: Spider opened
+2024-09-04 01:41:19 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2024-09-04 01:41:19 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2024-09-04 01:41:19 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:41:19 [scrapy-playwright] INFO: Starting download handler
+2024-09-04 01:41:24 [scrapy-playwright] INFO: Launching browser chromium
+2024-09-04 01:41:24 [scrapy-playwright] INFO: Browser chromium launched
+2024-09-04 01:41:26 [root] INFO: 輸入用戶名和密碼。
+2024-09-04 01:41:35 [root] INFO: 提交登入表單。
+2024-09-04 01:41:43 [scrapy.core.scraper] ERROR: Spider error processing <GET https://www.facebook.com/login> (referer: None)
+Traceback (most recent call last):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/defer.py", line 295, in aiter_errback
+    yield await it.__anext__()
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 374, in __anext__
+    return await self.data.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/python.py", line 355, in _async_chain
+    async for o in as_async_generator(it):
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/utils/asyncgen.py", line 14, in as_async_generator
+    async for r in it:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/referer.py", line 355, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/urllength.py", line 30, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/spidermiddlewares/depth.py", line 35, in process_spider_output_async
+    async for r in result or ():
+  File "/Users/wangshihya/Threads_scrapy_playwright/venv/lib/python3.11/site-packages/scrapy/core/spidermw.py", line 118, in process_async
+    async for r in iterable:
+  File "/Users/wangshihya/Threads_scrapy_playwright/threads_scraper/threads_scraper/spiders/facebook_spider.py", line 85, in login_and_save_cookies
+    for request in self.process_accounts_after_login(headers):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FacebookSpider' object has no attribute 'process_accounts_after_login'
+2024-09-04 01:41:43 [scrapy.core.engine] INFO: Closing spider (finished)
+2024-09-04 01:41:43 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 363,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 75362,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 24.498105,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2024, 9, 3, 17, 41, 43, 530331, tzinfo=datetime.timezone.utc),
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 16,
+ 'memusage/max': 76742656,
+ 'memusage/startup': 76742656,
+ 'playwright/browser_count': 1,
+ 'playwright/context_count': 1,
+ 'playwright/context_count/max_concurrent': 1,
+ 'playwright/context_count/persistent/False': 1,
+ 'playwright/context_count/remote/False': 1,
+ 'playwright/page_count': 1,
+ 'playwright/page_count/max_concurrent': 1,
+ 'playwright/request_count': 57,
+ 'playwright/request_count/method/GET': 53,
+ 'playwright/request_count/method/POST': 4,
+ 'playwright/request_count/navigation': 2,
+ 'playwright/request_count/resource_type/document': 2,
+ 'playwright/request_count/resource_type/image': 7,
+ 'playwright/request_count/resource_type/other': 2,
+ 'playwright/request_count/resource_type/script': 38,
+ 'playwright/request_count/resource_type/stylesheet': 5,
+ 'playwright/request_count/resource_type/xhr': 3,
+ 'playwright/response_count': 57,
+ 'playwright/response_count/method/GET': 53,
+ 'playwright/response_count/method/POST': 4,
+ 'playwright/response_count/resource_type/document': 2,
+ 'playwright/response_count/resource_type/image': 7,
+ 'playwright/response_count/resource_type/other': 2,
+ 'playwright/response_count/resource_type/script': 38,
+ 'playwright/response_count/resource_type/stylesheet': 5,
+ 'playwright/response_count/resource_type/xhr': 3,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'spider_exceptions/AttributeError': 1,
+ 'start_time': datetime.datetime(2024, 9, 3, 17, 41, 19, 32226, tzinfo=datetime.timezone.utc)}
+2024-09-04 01:41:43 [scrapy.core.engine] INFO: Spider closed (finished)
+2024-09-04 01:41:43 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:41:43 [scrapy-playwright] INFO: Closing download handler
+2024-09-04 01:41:43 [scrapy-playwright] INFO: Closing browser
