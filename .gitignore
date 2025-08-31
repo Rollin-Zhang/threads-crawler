@@ -1,0 +1,20 @@
+# Virtual env
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs / DB
+*.log
+*.sqlite
+*.db
+*.pkl
+
+# System
+.DS_Store
+
+# Threads data
+Threads/threads_scraper/cookies.json
+Threads/threads_scraper/data/
