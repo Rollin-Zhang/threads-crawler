@@ -60,12 +60,10 @@ def login_to_threads(username, password):
     random_sleep(3, 5)
 
 if __name__ == "__main__":
-    import dotenv
-    dotenv.load_dotenv()
     USERNAME = os.getenv("THREADS_USERNAME")
     PASSWORD = os.getenv("THREADS_PASSWORD")
     if not USERNAME or not PASSWORD:
-        logging.error("請在 .env 檔案或環境變數中設定 THREADS_USERNAME 與 THREADS_PASSWORD")
+        logging.error("請設定 THREADS_USERNAME 與 THREADS_PASSWORD 環境變數！")
         exit(1)
     login_to_threads(USERNAME, PASSWORD)
     driver.quit()
