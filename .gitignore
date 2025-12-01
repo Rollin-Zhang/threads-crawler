@@ -17,4 +17,27 @@ __pycache__/
 
 # Threads data
 Threads/threads_scraper/cookies.json
+Threads/threads_scraper/storage_state.json
 Threads/threads_scraper/data/
+
+# Additional generated outputs and caches
+Threads/**/runs/
+Threads/**/*.json
+threads_auth/
+threads_auth/*.json
+threads_auth/*.txt
+.scrapy/
+playwright-report/
+playwright/.cache/
+playwright/.auth/
+.cache/
+.tmp/
+.temp/
+.vscode/
+.history/
+*.sqlite3
+*.log
+*.pkl
+
+# Env
+.env

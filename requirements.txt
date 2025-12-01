@@ -5,3 +5,11 @@ g4f
 playwright
 scrapy
 scrapy-playwright
+selenium
+webdriver-manager
+python-dotenv
+pyyaml
+simhash
+python-dateutil
+requests
+Flask

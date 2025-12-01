@@ -3,12 +3,15 @@ import json
 import logging
 import time
 import random
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
+
+load_dotenv()
 
 # 初始化日誌設置
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -29,7 +32,7 @@ driver = init_driver()
 def random_sleep(min_seconds=1, max_seconds=3):
     time.sleep(random.uniform(min_seconds, max_seconds))
 
-def login_to_threads(username, password):
+def login_to_threads(username, password, cookies_path, storage_state_path):
     logging.info("導航至Threads登入頁面。")
     driver.get("https://www.threads.net/login/?hl=zh-tw")
     random_sleep(2, 4)
@@ -49,21 +52,43 @@ def login_to_threads(username, password):
     password_input.send_keys(Keys.RETURN)
     random_sleep(7, 10)
 
-    # 保存 cookies 到 threads_scraper 資料夾
-    project_root = os.path.dirname(os.path.abspath(__file__))
-    cookies_path = os.path.join(project_root, 'threads_scraper', 'cookies.json')
+    # 進入首頁等待一段時間，確保 cookies 寫入
+    try:
+        driver.get("https://www.threads.net/?hl=zh-tw")
+        random_sleep(5, 8)
+    except Exception:
+        pass
 
-    cookies = driver.get_cookies()
-    with open(cookies_path, "w") as file:
-        json.dump(cookies, file)
+    # 保存 cookies 到指定路徑
+    cookies = driver.get_cookies() or []
+    os.makedirs(os.path.dirname(cookies_path), exist_ok=True)
+    if not cookies:
+        logging.warning("目前取得的 cookies 為空，將寫入空陣列以避免 null。")
+    with open(cookies_path, "w", encoding="utf-8") as file:
+        json.dump(list(cookies), file, ensure_ascii=False)
     logging.info(f"Cookies 已保存至 {cookies_path}")
     random_sleep(3, 5)
 
+    # 嘗試轉為 storage_state
+    try:
+        from tools.cookies_to_storage_state import to_storage_state
+        to_storage_state(cookies_path, storage_state_path)
+        logging.info(f"storage_state 已生成：{storage_state_path}")
+    except Exception as e:
+        logging.warning(f"轉 storage_state 失敗：{e}（可手動執行：python tools/cookies_to_storage_state.py）")
+
 if __name__ == "__main__":
-    USERNAME = os.getenv("THREADS_USERNAME")
-    PASSWORD = os.getenv("THREADS_PASSWORD")
-    if not USERNAME or not PASSWORD:
-        logging.error("請設定 THREADS_USERNAME 與 THREADS_PASSWORD 環境變數！")
-        exit(1)
-    login_to_threads(USERNAME, PASSWORD)
+    INSTAGRAM_USERNAME = os.getenv("INSTAGRAM_USERNAME") or os.getenv("THREADS_USERNAME")
+    INSTAGRAM_PASSWORD = os.getenv("INSTAGRAM_PASSWORD") or os.getenv("THREADS_PASSWORD")
+
+    if not INSTAGRAM_USERNAME or not INSTAGRAM_PASSWORD:
+        logging.error("請在 .env 設定 INSTAGRAM_USERNAME 與 INSTAGRAM_PASSWORD（或沿用 THREADS_USERNAME/THREADS_PASSWORD）！")
+        driver.quit()
+        raise SystemExit(1)
+
+    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    COOKIES_PATH = os.path.join(PROJECT_ROOT, 'Threads', 'threads_scraper', 'cookies.json')
+    STORAGE_STATE_PATH = os.path.join(PROJECT_ROOT, 'Threads', 'threads_scraper', 'storage_state.json')
+
+    login_to_threads(INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD, COOKIES_PATH, STORAGE_STATE_PATH)
     driver.quit()

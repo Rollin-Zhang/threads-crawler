@@ -1,0 +1,52 @@
+# Triage Client 設定（A 握手）
+
+source:
+  data_dir: "Threads/data"
+  timezone: "Asia/Taipei"
+
+account:
+  handle: "<your_threads_account>"
+
+context:
+  snippet_max_chars: 500  # 預設 500，可調整（僅影響 context_digest.target_snippet）
+
+batch:
+  mode: "async"        # 大量資料建議 async
+  wait_ms: 1200
+  max_size: 80          # 可依負載調整 50~100
+  flush_seconds: 10
+
+http:
+  base_url: "http://127.0.0.1:3000/v1"
+  timeout_seconds: 8
+  max_retries: 4
+  retry_backoff_seconds: 2
+
+security:
+  auth_token_env: "POBOT_TOKEN"
+
+persist:
+  dir: "Threads/provider/store"
+
+gate0:
+  enabled: false       # 本輪關閉 Gate-0，送全量
+  min_len: 10
+  max_recency_minutes: 1440
+  dedup:
+    enabled: true
+    simhash_threshold: 0.92
+  keywords_any: []
+
+items_gate:
+  enabled: true
+  record_policy: "payload_only"   # 請勿改為 record_and_payload，除非理解後果
+  default_mode: "strip"
+  per_item:
+    attachment:  { mode: "strip", keep_alt: false, max_chars: 0 }
+    likes:       { mode: "keep" }
+    comments:    { mode: "keep" }
+    response_to: { mode: "keep" }
+    author:      { mode: "keep" }
+    post_link:   { mode: "keep" }
+    datetime:    { mode: "keep" }
+  skip_if_any: []
