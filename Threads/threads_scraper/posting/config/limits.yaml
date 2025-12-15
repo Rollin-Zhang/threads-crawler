@@ -1,0 +1,4 @@
+mode: observe
+min_interval_sec: 8
+hour_cap: 999
+day_cap: 9999

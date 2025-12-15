@@ -1,0 +1,6 @@
+這是一則 Threads 測試貼文。
+
+- 這裡是多行內容示範
+- 可搭配 --text-file 參數載入
+
+#Hashtag #測試 #Demo

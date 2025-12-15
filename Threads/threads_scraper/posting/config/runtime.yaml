@@ -1,0 +1,24 @@
+humanize:
+  pre_feed_seconds: [60, 90]
+  post_feed_seconds: [30, 60]
+  scroll_step_px: [80, 180]
+  scroll_pause_ms: [120, 360]
+  scroll_interval_s: [0.5, 1.0]
+  long_pause_count: [7, 12]
+  long_pause_ms: [500, 1000]
+  micro_mouse: true
+
+timeouts:
+  goto_home_ms: 30000
+  goto_profile_ms: 30000
+  selector_ms: 8000
+
+typing:
+  per_char_ms: [50, 120]
+
+retry:
+  max_retries: 1
+
+risk:
+  mode: warn         # warn|stop
+  stop_on_r3_live: true

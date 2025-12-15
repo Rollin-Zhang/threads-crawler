@@ -1,0 +1,8 @@
+pyautogui
+pillow
+pytesseract
+g4f
+playwright
+scrapy
+scrapy-playwright
+PyYAML
